@@ -14,7 +14,7 @@ function Register() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/owners/register", {
+            const response = await fetch("https://employee-management-system-prld.onrender.com/owners/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

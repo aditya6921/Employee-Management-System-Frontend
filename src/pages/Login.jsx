@@ -16,7 +16,7 @@ function Login() {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/owners/login",
+                "https://employee-management-system-prld.onrender.com/owners/login",
                 {
                     method: "POST",
                     headers: {
