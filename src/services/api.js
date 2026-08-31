@@ -1,9 +1,7 @@
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://employee-management-system-prld.onrender.com";
 
-// =====================================================
-// EMPLOYEE APIs
-// =====================================================
+
 
 // Get logged-in owner's ID
 const getOwnerId = () => {
