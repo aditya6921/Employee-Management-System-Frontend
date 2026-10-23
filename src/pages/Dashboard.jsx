@@ -7,7 +7,7 @@ import {
     getTodayAttendance
 } from "../services/api";
 
-function Dashboard({ sidebarOpen, onMenuToggle }) {
+function Dashboard({ sidebarOpen, onMenuToggle, onSidebarClose }) {
     const [employees, setEmployees] = useState([]);
     const [attendance, setAttendance] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -57,7 +57,8 @@ function Dashboard({ sidebarOpen, onMenuToggle }) {
 
     return (
         <div className="app-layout">
-            <Sidebar isOpen={sidebarOpen} />
+            {sidebarOpen && <button className="sidebar-backdrop" onClick={onSidebarClose} aria-label="Close navigation" />}
+            <Sidebar isOpen={sidebarOpen} onNavigate={onSidebarClose} />
 
             <div className="main-section">
                 <Navbar onMenuToggle={onMenuToggle} />

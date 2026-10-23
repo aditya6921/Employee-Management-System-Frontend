@@ -12,6 +12,7 @@ import Reports from "./pages/Reports";
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const closeSidebar = () => setSidebarOpen(false);
 
     return (
         <BrowserRouter>
@@ -21,23 +22,23 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route
                     path="/dashboard"
-                    element={<Dashboard sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />}
+                    element={<Dashboard sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} onSidebarClose={closeSidebar} />}
                 />
                 <Route
                     path="/employees"
-                    element={<Employees sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />}
+                    element={<Employees sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} onSidebarClose={closeSidebar} />}
                 />
                 <Route
                     path="/attendance"
-                    element={<Attendance sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />}
+                    element={<Attendance sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} onSidebarClose={closeSidebar} />}
                 />
                 <Route
                     path="/salary"
-                    element={<Salary sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />}
+                    element={<Salary sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} onSidebarClose={closeSidebar} />}
                 />
                 <Route
                     path="/reports"
-                    element={<Reports sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />}
+                    element={<Reports sidebarOpen={sidebarOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} onSidebarClose={closeSidebar} />}
                 />
             </Routes>
         </BrowserRouter>

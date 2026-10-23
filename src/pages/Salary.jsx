@@ -7,7 +7,7 @@ import {
     getSalary
 } from "../services/api";
 
-function Salary({ sidebarOpen, onMenuToggle }) {
+function Salary({ sidebarOpen, onMenuToggle, onSidebarClose }) {
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState("");
     const [salaryData, setSalaryData] = useState(null);
@@ -60,7 +60,8 @@ function Salary({ sidebarOpen, onMenuToggle }) {
 
     return (
         <div className="app-layout">
-            <Sidebar isOpen={sidebarOpen} />
+            {sidebarOpen && <button className="sidebar-backdrop" onClick={onSidebarClose} aria-label="Close navigation" />}
+            <Sidebar isOpen={sidebarOpen} onNavigate={onSidebarClose} />
 
             <div className="main-section">
                 <Navbar onMenuToggle={onMenuToggle} />
@@ -109,6 +110,7 @@ function Salary({ sidebarOpen, onMenuToggle }) {
 
                     {error && <p className="error">{error}</p>}
 
+                    {!loading && !error && !salaryData && employees.length === 0 && <div className="employee-section">Add an employee to calculate salary.</div>}
                     {!loading && salaryData && (
                         <>
                             <div className="dashboard-cards salary-summary">

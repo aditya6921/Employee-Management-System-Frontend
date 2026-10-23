@@ -1,5 +1,9 @@
 
-const API_URL = "https://employee-management-system-prld.onrender.com";
+
+// Set VITE_API_URL when building for a deployed API. Local development uses
+// Spring Boot on localhost; a same-origin deployment can leave it empty.
+const API_URL = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "http://localhost:8080" : "https://employee-management-system-prld.onrender.com")).replace(/\/$/, "");
+export { API_URL };
 
 
 
