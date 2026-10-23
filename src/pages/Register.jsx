@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../services/api";
 
 function Register() {
 
@@ -14,7 +15,7 @@ function Register() {
         e.preventDefault();
 
         try {
-            const response = await fetch("https://employee-management-system-prld.onrender.com/owners/register", {
+            const response = await fetch(`${API_URL}/owners/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

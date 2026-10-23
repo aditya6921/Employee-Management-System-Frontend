@@ -9,7 +9,7 @@ import {
     deleteEmployee
 } from "../services/api";
 
-function Employees({ sidebarOpen, onMenuToggle }) {
+function Employees({ sidebarOpen, onMenuToggle, onSidebarClose }) {
     const [employees, setEmployees] = useState([]);
     const [search, setSearch] = useState("");
     const [showForm, setShowForm] = useState(false);
@@ -121,7 +121,8 @@ function Employees({ sidebarOpen, onMenuToggle }) {
 
     return (
         <div className="app-layout">
-            <Sidebar isOpen={sidebarOpen} />
+            {sidebarOpen && <button className="sidebar-backdrop" onClick={onSidebarClose} aria-label="Close navigation" />}
+            <Sidebar isOpen={sidebarOpen} onNavigate={onSidebarClose} />
 
             <div className="main-section">
                 <Navbar onMenuToggle={onMenuToggle} />
@@ -162,7 +163,7 @@ function Employees({ sidebarOpen, onMenuToggle }) {
                                     {filteredEmployees.length > 0 ? (
                                         filteredEmployees.map((employee) => (
                                             <tr key={employee.employeeid}>
-                                                <td>#{employee.employeeid}</td>
+                                                <td>#{employees.findIndex((item) => item.employeeid === employee.employeeid) + 1}</td>
                                                 <td>
                                                     <strong>{employee.employeName}</strong>
                                                 </td>

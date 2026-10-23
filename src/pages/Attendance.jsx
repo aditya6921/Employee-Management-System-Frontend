@@ -10,7 +10,7 @@ import {
     getEmployees
 } from "../services/api";
 
-function Attendance({ sidebarOpen, onMenuToggle }) {
+function Attendance({ sidebarOpen, onMenuToggle, onSidebarClose }) {
     const [attendance, setAttendance] = useState([]);
     const [employees, setEmployees] = useState([]);
     const [showForm, setShowForm] = useState(false);
@@ -196,7 +196,8 @@ function Attendance({ sidebarOpen, onMenuToggle }) {
 
     return (
         <div className="app-layout">
-            <Sidebar isOpen={sidebarOpen} />
+            {sidebarOpen && <button className="sidebar-backdrop" onClick={onSidebarClose} aria-label="Close navigation" />}
+            <Sidebar isOpen={sidebarOpen} onNavigate={onSidebarClose} />
 
             <div className="main-section">
                 <Navbar onMenuToggle={onMenuToggle} />

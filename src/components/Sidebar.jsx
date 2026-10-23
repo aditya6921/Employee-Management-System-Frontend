@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { icons } from "./Icons";
 
-function Sidebar({ isOpen }) {
+function Sidebar({ isOpen, onNavigate }) {
     const navItems = [
         { path: "/dashboard", label: "Dashboard", icon: icons.layoutDashboard },
         { path: "/employees", label: "Employees", icon: icons.users },
@@ -12,6 +12,7 @@ function Sidebar({ isOpen }) {
 
     return (
         <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+            <button className="sidebar-close" onClick={onNavigate} aria-label="Close navigation">×</button>
             <div className="sidebar-brand">
                 <div className="sidebar-brand-icon">
                     {icons.shield}
@@ -35,6 +36,7 @@ function Sidebar({ isOpen }) {
                         className={({ isActive }) =>
                             isActive ? "active" : ""
                         }
+                        onClick={onNavigate}
                     >
                         {item.icon}
                         {item.label}

@@ -8,7 +8,7 @@ import {
     getSalary
 } from "../services/api";
 
-function Reports({ sidebarOpen, onMenuToggle }) {
+function Reports({ sidebarOpen, onMenuToggle, onSidebarClose }) {
     const today = new Date();
     const [year, setYear] = useState(today.getFullYear());
     const [month, setMonth] = useState(today.getMonth() + 1);
@@ -88,7 +88,8 @@ function Reports({ sidebarOpen, onMenuToggle }) {
 
     return (
         <div className="app-layout">
-            <Sidebar isOpen={sidebarOpen} />
+            {sidebarOpen && <button className="sidebar-backdrop" onClick={onSidebarClose} aria-label="Close navigation" />}
+            <Sidebar isOpen={sidebarOpen} onNavigate={onSidebarClose} />
 
             <div className="main-section">
                 <Navbar onMenuToggle={onMenuToggle} />

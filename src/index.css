@@ -1179,6 +1179,32 @@ tbody td.empty-state {
 }
 
 @media (max-width: 768px) {
+    /* The sidebar is hidden off-canvas on mobile, so remove its desktop offset. */
+    .main-section {
+        margin-left: 0;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .navbar {
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    .navbar-left {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .breadcrumb {
+        overflow-wrap: anywhere;
+    }
+
+    .admin-info {
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
     .sidebar {
         transform: translateX(-100%);
     }
@@ -1187,12 +1213,112 @@ tbody td.empty-state {
         transform: translateX(0);
     }
 
+    .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 190;
+        border: 0;
+        background: rgba(15, 23, 42, 0.42);
+    }
+
+    .sidebar-close {
+        display: block;
+        align-self: flex-end;
+        width: 40px;
+        height: 40px;
+        margin: -12px -8px 4px 0;
+        border: 0;
+        border-radius: 10px;
+        background: transparent;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
     .menu-toggle {
         display: block;
     }
 
     .dashboard {
-        padding: 20px;
+        padding: 16px;
+        min-width: 0;
+    }
+
+    .page-header h1,
+    .dashboard h1 {
+        font-size: clamp(22px, 7vw, 28px);
+        overflow-wrap: anywhere;
+    }
+
+    .page-header > div,
+    .page-header-actions {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .page-header-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .page-header-actions select,
+    .page-header-actions input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .add-button {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    .employee-section,
+    .recent-section {
+        padding: 16px;
+        min-width: 0;
+    }
+
+    .table-wrapper table {
+        min-width: 620px;
+    }
+
+    .employee-toolbar input {
+        width: 100%;
+    }
+
+    .form-buttons {
+        flex-wrap: wrap;
+    }
+
+    .navbar {
+        height: 64px;
+        padding: 0 12px;
+    }
+
+    .breadcrumb {
+        max-width: 32vw;
+        font-size: 11px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .notification-btn {
+        display: none;
+    }
+
+    .admin-info {
+        gap: 6px;
+    }
+
+    .admin-profile {
+        padding: 2px;
+        border: 0;
+        background: transparent;
+    }
+
+    .logout-button {
+        padding: 8px 10px;
+        font-size: 12px;
     }
 
     .dashboard-cards {
@@ -1220,6 +1346,10 @@ tbody td.empty-state {
     .admin-details {
         display: none;
     }
+}
+
+.sidebar-close {
+    display: none;
 }
 
 .home {
